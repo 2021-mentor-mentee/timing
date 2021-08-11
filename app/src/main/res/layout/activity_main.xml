@@ -69,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="알람"
+            android:textColor="#ffffff"
             android:backgroundTint="#00FFFFFF"/>
 
         <Button
@@ -77,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="타이머"
+            android:textColor="#ffffff"
             android:backgroundTint="#00FFFFFF"/>
 
     </LinearLayout>
