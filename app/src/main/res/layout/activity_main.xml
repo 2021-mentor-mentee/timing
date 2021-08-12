@@ -9,10 +9,9 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontStyle="italic"
-        android:text="알람이 곧 울립니다"
+        android:text="일어날 자신이 없다면 이 어플만 믿으라구"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
