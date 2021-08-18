@@ -29,35 +29,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="알람 등록"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_finish"
+        app:layout_constraintEnd_toStartOf="@+id/button_finish"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="76dp"
         android:text="알람 해제"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
+
         app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#3E3E3E"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="#3E3E3E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -67,18 +67,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#00FFFFFF"
             android:text="알람"
-            android:textColor="#ffffff"
-            android:backgroundTint="#00FFFFFF"/>
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/btn_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#00FFFFFF"
             android:text="타이머"
-            android:textColor="#ffffff"
-            android:backgroundTint="#00FFFFFF"/>
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

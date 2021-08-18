@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-public class Alarm_Reciver extends BroadcastReceiver {
+class Alarm_Reciver extends BroadcastReceiver {
 
     Context context;
 

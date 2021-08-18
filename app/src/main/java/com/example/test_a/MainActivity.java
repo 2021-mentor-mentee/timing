@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btn_timer = (Button)findViewById(R.id.btn_timer);
 
+        changeActivity();
 
         this.context = this;
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //알람 정지 버튼
-        Button alarm_off = findViewById(R.id.btn_finish);
+        Button alarm_off = findViewById(R.id.button_finish);
         alarm_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,13 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-                                    }
+        });
 
-
-
-        btn_timer = (Button)findViewById(R.id.btn_timer);
-
-        changeActivity();
     }
 
     void changeActivity() {
