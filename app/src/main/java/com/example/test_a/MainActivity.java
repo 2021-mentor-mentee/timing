@@ -22,34 +22,31 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class MainActivity extends AppCompatActivity {
 
 
-    AlarmManager alarmManager;
+    AlarmManager alarm_manager;
     TimePicker alarm_timepicker;
     Context context;
     PendingIntent pendingIntent;
 
-    Button btn_timer;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn_timer = (Button)findViewById(R.id.btn_timer);
-
-        changeActivity();
 
         this.context = this;
 
-        // 알람매니저 설정하기
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        // 알람매니저 설정
+        alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        //타임피커 설정하기
+        // 타임피커 설정
         alarm_timepicker = findViewById(R.id.tp_timepicker);
 
-        // Calendar 객체 생성하기
+        // Calendar 객체 생성
         final Calendar calendar = Calendar.getInstance();
 
-        // 알람리시버 intent 생성하기
+        // 알람리시버 intent 생성
         final Intent my_intent = new Intent(this.context, Alarm_Reciver.class);
 
         // 알람 시작 버튼
@@ -59,49 +56,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // calender에 시간 셋팅하기
+                // calendar에 시간 셋팅
                 calendar.set(Calendar.HOUR_OF_DAY, alarm_timepicker.getHour());
                 calendar.set(Calendar.MINUTE, alarm_timepicker.getMinute());
 
-                // 시간 가져오기
+                // 시간 가져옴
                 int hour = alarm_timepicker.getHour();
                 int minute = alarm_timepicker.getMinute();
-                Toast.makeText(MainActivity.this, "Alarm 예정" + hour + "시" + minute + "분", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Alarm 예정 " + hour + "시 " + minute + "분",Toast.LENGTH_SHORT).show();
 
-                // 알람 셋팅하기
-                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                // reveiver에 string 값 넘겨주기
+                my_intent.putExtra("state","alarm on");
+
+                pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, my_intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+                // 알람셋팅
+                alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                         pendingIntent);
             }
         });
 
-        //알람 정지 버튼
+        // 알람 정지 버튼
         Button alarm_off = findViewById(R.id.button_finish);
         alarm_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Alarm 종료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Alarm 종료",Toast.LENGTH_SHORT).show();
+                // 알람매니저 취소
+                alarm_manager.cancel(pendingIntent);
 
-                // 알람매니저 취소하기
-                alarmManager.cancel(pendingIntent);
+                my_intent.putExtra("state","alarm off");
 
-                my_intent.putExtra("state", "alarm off");
-
-                // 알람 취소하기
+                // 알람취소
                 sendBroadcast(my_intent);
-
-
-
-            }
-        });
-
-    }
-
-    void changeActivity() {
-        btn_timer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, TimerActivity.class);
-                startActivity(intent);
             }
         });
     }
