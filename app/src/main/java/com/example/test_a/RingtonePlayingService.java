@@ -70,7 +70,7 @@ public class RingtonePlayingService extends Service{
         // 알람음 재생 안하기 , 알람음 시작 클릭
         if(!this.isRunning && startId == 1) {
 
-//            mediaPlayer = MediaPlayer.create(this,R.raw.ouu);  //이건 res폴더안에 raw라는 폴더를 만들고 그 안에 ouu라는 이름으로 알람소리 파일을 넣어줘야함
+            mediaPlayer = MediaPlayer.create(this,R.raw.ouu);  //이건 res폴더안에 raw라는 폴더를 만들고 그 안에 ouu라는 이름으로 알람소리 파일을 넣어줘야함
             mediaPlayer.start();
 
             this.isRunning = true;
@@ -112,7 +112,7 @@ public class RingtonePlayingService extends Service{
     public void onDestroy() {
         super.onDestroy();
 
-        Log.d("onDestory() 실행", "서비스 파괴");
+        Log.d("onDestory() 실행", "서비스 파괴".);
 
     }
 }
