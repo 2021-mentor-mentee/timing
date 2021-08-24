@@ -3,25 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/arlam_back"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="일어날 자신이 없다면 이 어플만 믿으라구"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TimePicker
         android:id="@+id/tp_timepicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="160dp"
         android:timePickerMode="spinner"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,11 +22,12 @@
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="28dp"
         android:text="알람 등록"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_finish"
+        android:backgroundTint="#FFFFFF"
+        android:stateListAnimator="@null"
         app:layout_constraintEnd_toStartOf="@+id/button_finish"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
 
@@ -45,21 +36,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginEnd="9dp"
         android:text="알람 해제"
+        android:backgroundTint="#FFFFFF"
+        android:stateListAnimator="@null"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toEndOf="@+id/btn_start"
         app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="#3E3E3E"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
@@ -67,18 +61,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#00FFFFFF"
-            android:text="알람"
-            android:textColor="#ffffff" />
+            android:backgroundTint="#88C5CAE9"
+            android:stateListAnimator="@null"
+            android:text="알람" />
 
         <Button
             android:id="@+id/btn_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#00FFFFFF"
-            android:text="타이머"
-            android:textColor="#ffffff" />
+            android:backgroundTint="#88E1BEE7"
+            android:stateListAnimator="@null"
+            android:text="타이머" />
 
     </LinearLayout>
 

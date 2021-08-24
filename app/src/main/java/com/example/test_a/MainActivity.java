@@ -21,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    Button btn_timer;
     AlarmManager alarm_manager;
     TimePicker alarm_timepicker;
     Context context;
@@ -29,12 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        btn_timer = (Button)findViewById(R.id.btn_timer);
+        changeActivity();
         this.context = this;
 
         // 알람매니저 설정
@@ -90,6 +88,18 @@ public class MainActivity extends AppCompatActivity {
 
                 // 알람취소
                 sendBroadcast(my_intent);
+            }
+        });
+
+    }
+
+    void changeActivity() {
+        btn_timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TimerActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -28,6 +28,7 @@ public class TimerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(TimerActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
