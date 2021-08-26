@@ -1,120 +1,160 @@
 package com.example.test_a;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class TimerActivity extends AppCompatActivity {
 
-    LinearLayout timeCountSettingLV, timeCountLV;
+    LinearLayout timeCountSettingLV;
     EditText hourET, minuteET, secondET;
-    TextView hourTV, minuteTV, secondTV, finishTV;
-    Button startBtn;
-    int hour, minute, second;
-
+    Button startBtn, btn_alarm, stopBtn;
+    int hour = 0, minute = 0, second = 0;
+    MediaPlayer mediaPlayer;
+    Boolean useTimer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_timer);
+        btn_alarm = findViewById(R.id.btn_alarm);
         timeCountSettingLV = (LinearLayout) findViewById(R.id.timeCountSettingLV);
-        timeCountLV = (LinearLayout) findViewById(R.id.timeCountLV);
-
         hourET = (EditText) findViewById(R.id.hourET);
         minuteET = (EditText) findViewById(R.id.minuteET);
         secondET = (EditText) findViewById(R.id.secondET);
-
-        hourTV = (TextView) findViewById(R.id.hourTV);
-        minuteTV = (TextView) findViewById(R.id.minuteTV);
-        secondTV = (TextView) findViewById(R.id.secondTV);
-        finishTV = (TextView) findViewById(R.id.finishTV);
-
         startBtn = (Button) findViewById(R.id.startBtn);
+        stopBtn = (Button) findViewById(R.id.stopBtn);
 
+        changeActivity();
+        timerStart();
+        timerStop();
 
+    }
+
+    void timerStart() {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                timeCountSettingLV.setVisibility(View.GONE);
-                timeCountLV.setVisibility(View.VISIBLE);
+                try {
+                    hour = Integer.parseInt(hourET.getText().toString());
+                }catch (Exception e){}
+                try {
+                    minute = Integer.parseInt(minuteET.getText().toString());
+                }catch (Exception e){}
+                try {
+                    second = Integer.parseInt(secondET.getText().toString());
+                }catch (Exception e){}
 
-                hourTV.setText(hourET.getText().toString());
-                minuteTV.setText(minuteET.getText().toString());
-                secondTV.setText(secondET.getText().toString());
+                handler.sendEmptyMessage(0);
+            }
 
-                hour = Integer.parseInt(hourET.getText().toString());
-                minute = Integer.parseInt(minuteET.getText().toString());
-                second = Integer.parseInt(secondET.getText().toString());
+        });
+    }
 
-                Timer timer = new Timer();
-                TimerTask timerTask = new TimerTask() {
-                    @Override
-                    public void run() {
+    void timerStop() {
+        stopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handler.removeMessages(0);
+                if(hour == 0) {
+                    hourET.setText("");
+                } else if (minute == 0) {
+                    minuteET.setText("");
+                } else if (second == 0) {
+                    secondET.setText("");
+                }
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                useTimer = false;
+            }
+        });
+    }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if(second != 0) {
+                //1초씩 감소
+                second--;
 
-                        if (second != 0) {
+                // 0분 이상이면
+            } else if(minute != 0) {
+                // 1분 = 60초
+                second = 60;
+                second--;
+                minute--;
 
-                            second--;
+                // 0시간 이상이면
+            } else if(hour != 0) {
+                // 1시간 = 60분
+                second = 60;
+                minute = 60;
+                second--;
+                minute--;
+                hour--;
+            }
 
+            //시, 분, 초가 10이하(한자리수) 라면
+            // 숫자 앞에 0을 붙인다 ( 8 -> 08 )
+            if(second <= 9){
+                secondET.setText("0" + second);
+            } else {
+                secondET.setText(Integer.toString(second));
+            }
 
-                        } else if (minute != 0) {
+            if(minute <= 9){
+                minuteET.setText("0" + minute);
+            } else {
+                minuteET.setText(Integer.toString(minute));
+            }
 
-                            second = 60;
-                            second--;
-                            minute--;
+            if(hour <= 9){
+                hourET.setText("0" + hour);
+            } else {
+                hourET.setText(Integer.toString(hour));
+            }
 
+//             시분초가 다 0이라면 toast를 띄우고 타이머를 종료한다.
+            if(hour == 0 && minute == 0 && second == 0 && useTimer == false) {
+                hourET.setText("");
+                minuteET.setText("");
+                secondET.setText("");
+                mediaPlayer = MediaPlayer.create(TimerActivity.this, R.raw.alarm_sound);
+                mediaPlayer.start();
+                Vibrator vibrator = (Vibrator) getSystemService(TimerActivity.this.VIBRATOR_SERVICE);
+                vibrator.vibrate(500);
+                useTimer = true;
+            }
+            handler.sendEmptyMessageDelayed(0, 1000);
+        }
+    };
 
-                        } else if (hour != 0) {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.getLooper().quit();
+    }
 
-                            second = 60;
-                            minute = 60;
-                            second--;
-                            minute--;
-                            hour--;
-                        }
-
-
-                        if (second <= 9) {
-                            secondTV.setText("0" + second);
-                        } else {
-                            secondTV.setText(Integer.toString(second));
-                        }
-
-                        if (minute <= 9) {
-                            minuteTV.setText("0" + minute);
-                        } else {
-                            minuteTV.setText(Integer.toString(minute));
-                        }
-
-                        if (hour <= 9) {
-                            hourTV.setText("0" + hour);
-                        } else {
-                            hourTV.setText(Integer.toString(hour));
-                        }
-
-
-                        if (hour == 0 && minute == 0 && second == 0) {
-                            timer.cancel();
-                            finishTV.setText("타이머 종료.");
-                        }
-                    }
-                };
-
-
-                timer.schedule(timerTask, 0, 1000);
+    void changeActivity() {
+        btn_alarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TimerActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
 }
-

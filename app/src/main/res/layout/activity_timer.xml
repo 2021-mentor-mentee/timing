@@ -22,21 +22,23 @@
 
         <EditText
             android:id="@+id/hourET"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="10pt"
             android:hint="00"
+            android:maxLength="2"
             android:inputType="number" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text=":"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="10pt"
             app:layout_constraintBottom_toTopOf="@+id/startBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,21 +46,23 @@
 
         <EditText
             android:id="@+id/minuteET"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:hint="00"
+            android:textSize="10pt"
+            android:maxLength="2"
             android:inputType="number" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text=":"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="10pt"
             app:layout_constraintBottom_toTopOf="@+id/startBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,104 +70,41 @@
 
         <EditText
             android:id="@+id/secondET"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:hint="00"
+            android:textSize="10pt"
+            android:maxLength="2"
             android:inputType="number" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/timeCountLV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/startBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/hourTV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text=":"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/startBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/minuteTV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text=":"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/startBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/secondTV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/finishTV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeCountSettingLV" />
 
     <Button
         android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="272dp"
+        android:layout_marginBottom="292dp"
         android:backgroundTint="#FFFFFF"
         android:stateListAnimator="@null"
         android:text="시작"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="292dp"
+        android:backgroundTint="#FFFFFF"
+        android:stateListAnimator="@null"
+        android:text="중지"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
