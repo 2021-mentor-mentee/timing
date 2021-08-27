@@ -144,7 +144,9 @@ public class TimerActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.getLooper().quit();
+        try {
+            handler.removeMessages(0);
+        }catch (Exception e){}
     }
 
     void changeActivity() {

@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -62,8 +63,8 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setWhen(System.currentTimeMillis())
 
                 .setTicker("{Time to watch some cool stuff!}")
-                .setContentTitle("상태바 드래그시 보이는 타이틀")
-                .setContentText("상태바 드래그시 보이는 서브타이틀")
+                .setContentTitle("설정한 알람시간이 되었습니다")
+                .setContentText("터치시 앱으로 돌아갑니다")
                 .setContentInfo("INFO")
                 .setContentIntent(pendingI);
 
@@ -75,7 +76,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             Calendar nextNotifyTime = Calendar.getInstance();
 
             // 내일 같은 시간으로 알람시간 결정
-            nextNotifyTime.add(Calendar.DATE, 1);
+//            nextNotifyTime.add(Calendar.DATE, 1);
 
             //  Preference에 설정한 값 저장
             SharedPreferences.Editor editor = context.getSharedPreferences("daily alarm", MODE_PRIVATE).edit();

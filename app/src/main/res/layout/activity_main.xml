@@ -22,11 +22,11 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="28dp"
-        android:text="알람 등록"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#FFFFFF"
         android:stateListAnimator="@null"
+        android:text="알람 등록"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
 
