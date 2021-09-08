@@ -1,4 +1,4 @@
-package com.example.timing;
+package com.mtmt_timing.timing;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

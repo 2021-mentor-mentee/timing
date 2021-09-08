@@ -1,4 +1,4 @@
-package com.example.timing;
+package com.mtmt_timing.timing;
 
 import org.junit.Test;
 

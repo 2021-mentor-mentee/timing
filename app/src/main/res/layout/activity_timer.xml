@@ -28,6 +28,8 @@
             android:gravity="center"
             android:textSize="10pt"
             android:hint="00"
+            android:textColorHint="#303030"
+            android:textColor="#303030"
             android:maxLength="2"
             android:inputType="number" />
 

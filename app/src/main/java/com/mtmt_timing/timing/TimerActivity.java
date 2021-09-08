@@ -1,18 +1,23 @@
-package com.example.timing;
+package com.mtmt_timing.timing;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.lang.reflect.Field;
 
 public class TimerActivity extends AppCompatActivity {
 
@@ -40,6 +45,7 @@ public class TimerActivity extends AppCompatActivity {
         timerStop();
 
     }
+
 
     void timerStart() {
         startBtn.setOnClickListener(new View.OnClickListener() {
