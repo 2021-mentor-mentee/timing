@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         btn_timer = (Button) findViewById(R.id.btn_timer);
         changeActivity();
         final TimePicker picker = (TimePicker) findViewById(R.id.tp_timepicker);
-        dateTimePickerTextColour(picker, Color.BLACK );
 
 
         picker.setIs24HourView(true);
@@ -138,33 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void numberPickerTextColor(NumberPicker $v, int $c ){
-        for(int i = 0, j = $v.getChildCount() ; i < j; i++){
-            View t0 = $v.getChildAt(i);
-            if( t0 instanceof EditText){
-                try{
-                    Field t1 = $v.getClass() .getDeclaredField( "mSelectorWheelPaint" );
-                    t1.setAccessible(true);
-                    ((Paint)t1.get($v)) .setColor($c);
-                    ((EditText)t0) .setTextColor($c);
-                    $v.invalidate();
-                }catch(Exception e){}
-            }
-        }
-    }
 
-    void dateTimePickerTextColour(ViewGroup $picker, int $color ){
 
-        for( int i = 0, j = $picker.getChildCount() ; i < j ; i++ ){
-            View t0 = (View)$picker.getChildAt(i);
-
-            //NumberPicker는 아까만든 함수로 발라내고
-            if(t0 instanceof NumberPicker) numberPickerTextColor( (NumberPicker)t0, $color );
-
-                //아니면 계속 돌아봐
-            else if(t0 instanceof ViewGroup) dateTimePickerTextColour( (ViewGroup)t0, $color );
-        }
-    }
 
 
 

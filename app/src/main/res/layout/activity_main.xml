@@ -6,13 +6,15 @@
     android:background="@drawable/arlam_back"
     tools:context=".MainActivity">
 
-    <TimePicker
+
+    <com.mtmt_timing.timing.PmTimePicker
         android:id="@+id/tp_timepicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
-        android:timePickerMode="spinner"
+        android:layout_marginTop="180dp"
+        android:calendarViewShown="false"
+        android:spinnersShown="true"
+        android:theme="@android:style/Theme.Holo.Light"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,13 +24,16 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="36dp"
         android:backgroundTint="#FFFFFF"
         android:stateListAnimator="@null"
         android:text="알람 등록"
+        android:textColor="#303030"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tp_timepicker" />
+        app:layout_constraintTop_toBottomOf="@+id/tp_timepicker"
+        app:layout_constraintVertical_bias="0.068" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -49,7 +54,8 @@
             android:layout_weight="1"
             android:backgroundTint="#88C5CAE9"
             android:stateListAnimator="@null"
-            android:text="알람" />
+            android:text="알람"
+            android:textColor="#303030" />
 
         <Button
             android:id="@+id/btn_timer"
@@ -58,7 +64,8 @@
             android:layout_weight="1"
             android:backgroundTint="#88E1BEE7"
             android:stateListAnimator="@null"
-            android:text="타이머" />
+            android:text="타이머"
+            android:textColor="#303030" />
 
     </LinearLayout>
 

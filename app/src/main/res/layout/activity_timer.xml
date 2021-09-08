@@ -28,12 +28,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#8B008B"
-            android:textColorHint="#8B008B"
             android:textSize="10pt"
             android:hint="00"
-            android:textColorHint="#303030"
-            android:textColor="#303030"
+            android:textColorHint="#8B008B"
+            android:textColor="#8B008B"
             android:maxLength="2"
             android:inputType="number" />
 
@@ -99,6 +97,7 @@
         android:backgroundTint="#FFFFFF"
         android:stateListAnimator="@null"
         android:text="시작"
+        android:textColor="#303030"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
@@ -112,6 +111,7 @@
         android:backgroundTint="#FFFFFF"
         android:stateListAnimator="@null"
         android:text="중지"
+        android:textColor="#303030"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.708"
@@ -136,7 +136,8 @@
             android:layout_weight="1"
             android:backgroundTint="#88C5CAE9"
             android:stateListAnimator="@null"
-            android:text="알람" />
+            android:text="알람"
+            android:textColor="#303030"/>
 
         <Button
             android:id="@+id/btn_timer"
@@ -145,7 +146,8 @@
             android:layout_weight="1"
             android:backgroundTint="#88E1BEE7"
             android:stateListAnimator="@null"
-            android:text="타이머" />
+            android:text="타이머"
+            android:textColor="#303030"/>
 
     </LinearLayout>
 
